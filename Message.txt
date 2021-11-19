@@ -1,0 +1,11 @@
+b'(Message)'<BasicProperties>
+b'example'<BasicProperties(['delivery_mode=1', "headers={'example': ''}"])>
+b'example2'<BasicProperties(['delivery_mode=1', "headers={'example': ''}"])>
+b'example3'<BasicProperties(['delivery_mode=1', "headers={'example': ''}"])>
+b'example4'<BasicProperties(['delivery_mode=1', "headers={'example': ''}"])>
+b'example4'<BasicProperties(['delivery_mode=1', "headers={'example': ''}"])>
+b'example5'<BasicProperties(['delivery_mode=1', "headers={'example': ''}"])>
+b'example6'<BasicProperties(['delivery_mode=1', "headers={'example': ''}"])>
+b'Adesso'<BasicProperties(['delivery_mode=1', "headers={'Adesso': ''}"])>
+b'Adesso'<BasicProperties(['delivery_mode=2', "headers={'Adesso': ''}"])>
+b'Adesso2'<BasicProperties(['delivery_mode=2', "headers={'Adesso2': ''}"])>
