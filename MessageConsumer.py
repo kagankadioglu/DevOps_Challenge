@@ -1,31 +1,21 @@
-import pika, sys, os
+import pika
 Docker_Connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 channel = Docker_Connection.channel()
-ths = open("Received.txt", "w")
-
 
 def main():
+    Queue=input('Queue: ')
 
-    channel.queue_declare(queue='hello')
-
-
+    channel.queue_declare(Queue)
     def callback(ch, method, properties, body):
-        print(" [x] Received %r" % body)
-        ths.write(str(body))
 
+        print("[*] A massage received %r" % body)
 
-    channel.basic_consume(queue='hello', on_message_callback=callback, auto_ack=True)
+        with open("Message.txt", "a") as ths:      # To save the Headers and Message  at the the text file
+            ths.write(str(body)+str(properties)+"\n")
 
-    print(' [*] Waiting for messages. To exit press CTRL+C')
+    channel.basic_consume(queue=(Queue), on_message_callback=callback, auto_ack=True)
+
+    print('[#] Waiting for messages.')
     channel.start_consuming()
 
-if __name__ == '__main__':
-    try:
-        main()
-
-    except KeyboardInterrupt:
-        print('Interrupted')
-        try:
-            sys.exit(0)
-        except SystemExit:
-            os._exit(0)
+main()
